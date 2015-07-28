@@ -2194,7 +2194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    model.relations[key] = relations[key].clone();
 	  }
 	  model._previousAttributes = _.clone(this._previousAttributes);
-	  model.changed = setProps(Object.create(null), this.changed);
+	  model.changed = _.clone(this.changed);
 	  return model;
 	};
 
@@ -2235,15 +2235,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this.changed = Object.create(null);
 	  return this;
 	};
-
-	// Set the changed properties on the object.
-	function setProps(obj, hash) {
-	  var i = -1, keys = Object.keys(hash);
-	  while (++i < hash.length) {
-	    var key = hash[i]
-	    obj[key] = hash[key];
-	  }
-	}
 
 	// "_" methods that we want to implement on the Model.
 	var modelMethods = ['keys', 'values', 'pairs', 'invert', 'pick', 'omit'];
